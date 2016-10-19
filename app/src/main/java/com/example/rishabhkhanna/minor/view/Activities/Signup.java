@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.example.rishabhkhanna.minor.R;
 import com.example.rishabhkhanna.minor.Utils.utils;
 import com.example.rishabhkhanna.minor.models.AuthCredits;
@@ -48,6 +50,8 @@ public class Signup extends AppCompatActivity {
         passwordET = (EditText) findViewById(R.id.password_signup);
         loginLink = (TextView) findViewById(R.id.login_link);
 
+        mAuth = FirebaseAuth.getInstance();
+
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,16 +59,18 @@ public class Signup extends AppCompatActivity {
             }
         });
 
+
+
         mAuthListner = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                if(user != null){
+                if(user == null){
                     Log.d(TAG, "cant sign up now Error" );
                 }else{
-                    Log.d(TAG , "onAuthStateChanged: " + user.getEmail());
+                    Log.d(TAG , "onAuthStateChanged: ");
                 }
 
             }
@@ -72,27 +78,44 @@ public class Signup extends AppCompatActivity {
     }
 
     private void signup() {
-        ProgressDialog progressDialog = new ProgressDialog(Signup.this , R.style.AppTheme);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating User...");
-        progressDialog.show();
+//        ProgressDialog progressDialog = new ProgressDialog(Signup.this , R.style.AppTheme);
+//        progressDialog.setIndeterminate(true);
+//        progressDialog.setMessage("Creating User...");
+//        progressDialog.show();
         final String name = nameET.getText().toString();
         final String email = emailEt.getText().toString();
         final String password = passwordET.getText().toString();
 
+        //Firebase create user
         mAuth.createUserWithEmailAndPassword(email , password).addOnCompleteListener(Signup.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(!task.isSuccessful()){
                     Toast.makeText(Signup.this, "Cannot Signup right now !!", Toast.LENGTH_SHORT).show();
                 }else{
+
                     Log.d(TAG , "Signup Completed !!");
                     AuthCredits authCredits = new AuthCredits(name, email , password);
                     Gson gson = new Gson();
                     String signupJson = gson.toJson(authCredits);
                     //server call POST request
                     try {
-                        utils.stringrequestPOST(signupJson);
+                        //add volley request in que
+
+                        RequestQueue que  = Volley.newRequestQueue(Signup.this);
+                        que.add(utils.stringrequestPOST(signupJson , new utils.serverCallback(){
+                            // call back inter face to be implemeted after network volley call
+                            @Override
+                            public void onSuccess(AuthCredits authCredits) {
+                                Log.d("Auth" , authCredits.getEmail());
+                                if(authCredits == null){
+                                    Toast.makeText(Signup.this, "Signup completed but cant login", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(Signup.this, "Signup and Login Completed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }));
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

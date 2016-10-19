@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
         passwordET = (EditText) findViewById(R.id.password_login);
         signup_linkTV = (TextView) findViewById(R.id.signup_link);
 
+        mAuth = FirebaseAuth.getInstance();
 
         mAuthListner = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -47,6 +48,7 @@ public class Login extends AppCompatActivity {
                     Log.d(TAG , "cant Login");
                 }else{
                     Log.d(TAG, "onAuthStateChanged: " + user.getEmail().toString());
+
                 }
 
             }
@@ -85,7 +87,7 @@ public class Login extends AppCompatActivity {
                 if(!task.isSuccessful()){
                     Toast.makeText(Login.this, "Cannot Login right now !!", Toast.LENGTH_SHORT).show();
                 }else{
-
+                    //make network request to fetch
                 }
 
             }
