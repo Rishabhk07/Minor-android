@@ -21,7 +21,7 @@ public class utils {
 
     public static final String cinemaEndPoint = "http://172.16.97.254:8000/cinema";
     public static final String addUserEndPoint = "http://192.168.43.164:8000/addUser";
-    public static final String getUserEndPoint = "http://192.168.43.164:8000/addUser";
+    public static final String getUserEndPoint = "http://192.168.43.164:8000/getUser";
     public static AuthCredits authenticatedCredits = null;
     public String TAG = "Utils";
 
@@ -76,12 +76,12 @@ public class utils {
         return stringRequest;
     }
 
-    public static final JsonObjectRequest stringrequestPOSTAddUser(String email) throws JSONException {
+    public static final JsonObjectRequest stringrequestPOSTgetUser(String email, serverCallback serverCallback) throws JSONException {
 
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, getUserEndPoint , new JSONObject(jsonAuthData), new Response.Listener<JSONObject>() {
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, getUserEndPoint , new JSONObject(email), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+             Log.d("LoginTAG" , "Login wiht" + response);
             }
         }, new Response.ErrorListener() {
             @Override

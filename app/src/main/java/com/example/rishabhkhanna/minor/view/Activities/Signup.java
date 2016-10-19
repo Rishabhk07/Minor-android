@@ -1,6 +1,7 @@
 package com.example.rishabhkhanna.minor.view.Activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -112,6 +113,8 @@ public class Signup extends AppCompatActivity {
                                     Toast.makeText(Signup.this, "Signup completed but cant login", Toast.LENGTH_SHORT).show();
                                 }else{
                                     Toast.makeText(Signup.this, "Signup and Login Completed", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(Signup.this , User.class);
+                                    startActivity(i);
                                 }
                             }
                         }));
