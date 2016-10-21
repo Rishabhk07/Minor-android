@@ -79,10 +79,10 @@ public class Signup extends AppCompatActivity {
     }
 
     private void signup() {
-//        ProgressDialog progressDialog = new ProgressDialog(Signup.this , R.style.AppTheme);
-//        progressDialog.setIndeterminate(true);
-//        progressDialog.setMessage("Creating User...");
-//        progressDialog.show();
+        final ProgressDialog progressDialog = new ProgressDialog(Signup.this);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Creating User...");
+        progressDialog.show();
         final String name = nameET.getText().toString();
         final String email = emailEt.getText().toString();
         final String password = passwordET.getText().toString();
@@ -114,6 +114,7 @@ public class Signup extends AppCompatActivity {
                                 }else{
                                     Toast.makeText(Signup.this, "Signup and Login Completed", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(Signup.this , User.class);
+                                    progressDialog.dismiss();
                                     startActivity(i);
                                 }
                             }

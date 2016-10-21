@@ -4,34 +4,49 @@
     android:layout_height="match_parent"
     tools:context="com.example.rishabhkhanna.minor.view.Fragments.UserFragment"
     >
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:background="@color/colorBottomNavigationNotification"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         >
-    <android.support.v7.widget.AppCompatImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_margin="8dp"
-        android:id="@+id/profileimage"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/user_placeholder"/>
-    <android.support.v7.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profileimage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:text="Rishabh Khanna"
-        android:textColor="#fff"
-        android:textStyle="normal"
-        android:textSize="20sp"
-        />
-    </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:background="@color/colorBottomNavigationNotification"
+            android:id="@+id/profile_relative"
+            >
+        <android.support.v7.widget.AppCompatImageButton
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:id="@+id/profileimage"
+            android:layout_centerHorizontal="true"/>
+            <!--android:src="@drawable/user_placeholder"/>-->
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profileimage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="Rishabh Khanna"
+            android:textColor="#fff"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:id="@+id/profile_name"
+            />
+        </RelativeLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:id="@+id/ticket_list_view"></ListView>
+    </LinearLayout>
 
 </FrameLayout>

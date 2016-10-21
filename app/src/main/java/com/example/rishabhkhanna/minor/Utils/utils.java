@@ -22,6 +22,7 @@ public class utils {
     public static final String cinemaEndPoint = "http://172.16.97.254:8000/cinema";
     public static final String addUserEndPoint = "http://192.168.43.164:8000/addUser";
     public static final String getUserEndPoint = "http://192.168.43.164:8000/getUser";
+    public static final String movieTickets = "http://192.168.43.164:8000/getUser";
     public static AuthCredits authenticatedCredits = null;
     public String TAG = "Utils";
 
@@ -59,6 +60,7 @@ public class utils {
                     Log.d("TAG", "name: "+ name );
                     Log.d("TAG", "password: " + password );
                     AuthCredits authCredits = new AuthCredits(name , email , password);
+                    authenticatedCredits = authCredits;
                     serverCallback.onSuccess(authCredits);
 
                 } catch (JSONException e) {
@@ -76,12 +78,29 @@ public class utils {
         return stringRequest;
     }
 
-    public static final JsonObjectRequest stringrequestPOSTgetUser(String email, serverCallback serverCallback) throws JSONException {
+    public static final JsonObjectRequest stringrequestPOSTgetUser(String email, final serverCallback serverCallback) throws JSONException {
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, getUserEndPoint , new JSONObject(email), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
              Log.d("LoginTAG" , "Login wiht" + response);
+                String email = null;
+                try {
+                    email = response.getString("email");
+                    String name = response.getString("name");
+                    String password = response.getString("password");
+                    Log.d("TAG", "email: " + email );
+                    Log.d("TAG", "name: "+ name );
+                    Log.d("TAG", "password: " + password );
+                    AuthCredits authCredits = new AuthCredits(name , email , password);
+                    authenticatedCredits = authCredits;
+                    serverCallback.onSuccess(authCredits);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
             }
         }, new Response.ErrorListener() {
             @Override

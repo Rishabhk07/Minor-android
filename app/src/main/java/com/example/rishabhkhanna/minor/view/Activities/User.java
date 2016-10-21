@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.example.rishabhkhanna.minor.R;
+import com.example.rishabhkhanna.minor.view.Fragments.ShowcaseFragment;
 import com.example.rishabhkhanna.minor.view.Fragments.UserFragment;
 
 public class User extends AppCompatActivity {
@@ -38,7 +39,7 @@ public class User extends AppCompatActivity {
 
         //Fragment initialization
         UserFragment userFragment = new UserFragment();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout , userFragment , null);
         fragmentTransaction.commit();
 
@@ -47,12 +48,16 @@ public class User extends AppCompatActivity {
             public boolean onTabSelected(int position, boolean wasSelected) {
                 switch (position){
                     case 0:
+                        ShowcaseFragment showcaseFragment = new ShowcaseFragment();
+                        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction1.replace(R.id.frame_layout , showcaseFragment , null);
+                        fragmentTransaction1.commit();
                         break;
                     case 1:
                         break;
                     case 2:
                         break;
-                    case 4:
+                    case 3:
                         UserFragment userFragment = new UserFragment();
                         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.frame_layout , userFragment , null);
