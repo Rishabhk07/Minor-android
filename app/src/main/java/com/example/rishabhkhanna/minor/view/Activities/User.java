@@ -39,8 +39,9 @@ public class User extends AppCompatActivity {
 
         //Fragment initialization
         UserFragment userFragment = new UserFragment();
+        ShowcaseFragment showcaseFragment = new ShowcaseFragment();
         final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout , userFragment , null);
+        fragmentTransaction.replace(R.id.frame_layout , showcaseFragment, null);
         fragmentTransaction.commit();
 
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
