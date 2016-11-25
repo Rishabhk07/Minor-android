@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.rishabhkhanna.minor.R;
 import com.example.rishabhkhanna.minor.models.ShowCaseMovies;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -53,6 +54,8 @@ public class ShowcaseFragment extends Fragment {
         recyclerView.setAdapter(showcaseRecyclerViewAdapter);
 
         showcaseRecyclerViewAdapter.notifyDataSetChanged();
+
+        Log.d("reg token:" , FirebaseInstanceId.getInstance().getToken());
 
 
 
