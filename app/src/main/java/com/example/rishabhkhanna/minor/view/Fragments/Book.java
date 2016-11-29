@@ -10,14 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.rishabhkhanna.minor.R;
 import com.example.rishabhkhanna.minor.models.MovieHalls;
 import com.example.rishabhkhanna.minor.view.Activities.Seat_Book;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,12 +59,14 @@ public class Book extends Fragment {
 
         public TextView hallName;
         public Button book;
+        public CircleImageView hall_image;
 
 
         public HallsRecyclerViewHolder(View itemView) {
             super(itemView);
             hallName = (TextView) itemView.findViewById(R.id.hall_Tv);
             book = (Button) itemView.findViewById(R.id.button_book);
+            hall_image = (CircleImageView) itemView.findViewById(R.id.hall_image);
         }
     }
 
@@ -95,6 +101,8 @@ public class Book extends Fragment {
                     startActivity(i);
                 }
             });
+
+            Picasso.with(getActivity()).load(thisHall.getUrl()).into(holder.hall_image);
         }
 
         @Override

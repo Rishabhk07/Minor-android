@@ -13,12 +13,23 @@ public static class Halls {
     int platinum[][];
     int gold[][];
     int silver[][];
+    String url;
 
-    public Halls(String name, int[][] platinum, int[][] gold, int[][] silver) {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Halls(String name, int[][] platinum, int[][] gold, int[][] silver , String url) {
         this.name = name;
         this.platinum = platinum;
         this.gold = gold;
         this.silver = silver;
+        this.url = url;
+
     }
 
     public String getName() {
@@ -57,9 +68,10 @@ public static class Halls {
     public static ArrayList<Halls> getHalls(){
         ArrayList<Halls> halls = new ArrayList();
 
-        halls.add(new Halls("JAM Shipra Mall" , new int[2][10] , new int[4][10] , new int[3][10]));
-        halls.add(new Halls("SRS Aditya Mall" , new int[2][10] , new int[4][10] , new int[3][10]));
-        halls.add(new Halls("SRS Jaipurya" , new int[2][10] , new int[4][10] , new int[3][10]));
+        halls.add(new Halls("JAM Shipra Mall" , new int[2][10] , new int[4][10] , new int[3][10] , "http://image3.mouthshut.com/images/imagesp/925741867s.png"));
+        halls.add(new Halls("SRS Aditya Mall" , new int[2][10] , new int[4][10] , new int[3][10] , "http://dhoom.popkorn.in/media//theatrelogo/2015/Aug/1438689609-srslogo.jpg"));
+        halls.add(new Halls("SRS Jaipurya" , new int[2][10] , new int[4][10] , new int[3][10] , "http://dhoom.popkorn.in/media//theatrelogo/2015/Aug/1438689609-srslogo.jpg"));
+        halls.add(new Halls("M2k" , new int[2][10] , new int[4][10] , new int[3][10]  , "http://image3.mouthshut.com/images/imagesp/925670799s.jpg"));
 
      return halls;
     }
