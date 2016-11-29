@@ -22,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.rishabhkhanna.minor.models.AuthCredits;
 import com.example.rishabhkhanna.minor.view.Activities.Login;
 import com.example.rishabhkhanna.minor.view.Activities.Signup;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +37,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_main);
+
+
+
         login = (Button) findViewById(R.id.login_main);
         signup = (Button) findViewById(R.id.signup_main);
 //        que = Volley.newRequestQueue(this);

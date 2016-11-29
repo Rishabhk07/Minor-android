@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.example.rishabhkhanna.minor.R;
+import com.example.rishabhkhanna.minor.view.Fragments.Book;
 import com.example.rishabhkhanna.minor.view.Fragments.ShowcaseFragment;
 import com.example.rishabhkhanna.minor.view.Fragments.UserFragment;
 
@@ -57,12 +58,17 @@ public class User extends AppCompatActivity {
                     case 1:
                         break;
                     case 2:
+                        Book bookFragment = new Book();
+                        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.frame_layout , bookFragment , null);
+                        fragmentTransaction.commit();
+
                         break;
                     case 3:
                         UserFragment userFragment = new UserFragment();
-                        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.frame_layout , userFragment , null);
-                        fragmentTransaction.commit();
+                        FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction2.replace(R.id.frame_layout , userFragment , null);
+                        fragmentTransaction2.commit();
                         break;
                 }
                 return true;

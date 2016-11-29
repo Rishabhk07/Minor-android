@@ -8,7 +8,6 @@
     android:paddingRight="30dp"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
-    android:background="#333"
     >
 
     <android.support.v7.widget.CardView
@@ -17,7 +16,6 @@
         android:id="@+id/movie_showcase"
         android:layout_centerHorizontal="true"
         android:elevation="10dp"
-
      >
 
         <android.support.constraint.ConstraintLayout
@@ -58,6 +56,9 @@
                 android:layout_marginBottom="16dp"
                 app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintHorizontal_bias="0.15" />
+
+
+
 
         </android.support.constraint.ConstraintLayout>
 

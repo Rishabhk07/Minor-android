@@ -55,6 +55,7 @@ public class Login extends AppCompatActivity {
 
                 if(user != null){
                     Log.d(TAG , "cant Login");
+                    Toast.makeText(Login.this, "Cant login in firebase", Toast.LENGTH_SHORT).show();
                 }else{
                     Log.d(TAG, "onAuthStateChanged: " + user.getEmail().toString());
 
@@ -116,7 +117,7 @@ public class Login extends AppCompatActivity {
                             }
 
 
-                        }));
+                        } , Login.this));
 
                     } catch (JSONException e) {
                         e.printStackTrace();

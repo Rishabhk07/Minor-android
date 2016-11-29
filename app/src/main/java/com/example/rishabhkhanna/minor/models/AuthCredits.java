@@ -8,6 +8,7 @@ public class AuthCredits {
     private String name;
     private String email;
     private String password;
+    
 
     public AuthCredits(String name, String email, String password) {
         this.name = name;

@@ -13,7 +13,7 @@ import com.example.rishabhkhanna.minor.Services.NotificationService;
 
 public class Seat_Book extends AppCompatActivity {
 
-    public static final String url = "http://192.168.1.101:3000/webview";
+    public static final String url = "https://minor-end-point.herokuapp.com/webview";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

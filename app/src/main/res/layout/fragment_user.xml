@@ -10,36 +10,74 @@
         android:orientation="vertical"
         >
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="50dp"
+            android:paddingTop="20dp"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
+            android:paddingBottom="20dp"
             android:background="@color/colorBottomNavigationNotification"
             android:id="@+id/profile_relative"
             >
-        <android.support.v7.widget.AppCompatImageButton
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_margin="8dp"
             android:id="@+id/profileimage"
-            android:layout_centerHorizontal="true"/>
+            android:src="@color/cardview_dark_background"
+            />
             <!--android:src="@drawable/user_placeholder"/>-->
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profileimage"
+            android:layout_toRightOf="@id/profileimage"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
             android:text="Rishabh Khanna"
             android:textColor="#fff"
             android:textStyle="normal"
             android:textSize="20sp"
             android:id="@+id/profile_name"
             />
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/profileimage"
+                android:layout_below="@id/profile_name"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:text="sonal@gmail.com"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:id="@+id/profile_email"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Logout"
+                android:textColor="#fff"
+                android:layout_below="@id/profile_email"
+                android:layout_toRightOf="@id/profileimage"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:backgroundTint="#323232"
+                android:id="@+id/logout"
+                />
+
+
+
         </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
         <ListView
             android:layout_width="match_parent"

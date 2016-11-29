@@ -118,7 +118,7 @@ public class Signup extends AppCompatActivity {
                                     startActivity(i);
                                 }
                             }
-                        }));
+                        } , Signup.this));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
