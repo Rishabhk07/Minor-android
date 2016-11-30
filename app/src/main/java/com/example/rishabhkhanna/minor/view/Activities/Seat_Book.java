@@ -4,16 +4,23 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Xml;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.example.rishabhkhanna.minor.R;
 import com.example.rishabhkhanna.minor.Services.NotificationService;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 
 public class Seat_Book extends AppCompatActivity {
 
-    public static final String url = "https://minor-end-point.herokuapp.com/webview";
+    public static final String url = "http://192.168.1.101:3000/webview";
+    public static final String TAG = "seat book";
+    int hallPosition;
+    int moviePosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +30,49 @@ public class Seat_Book extends AppCompatActivity {
 
 
         Intent i = getIntent();
-        int position = i.getIntExtra("position" , 0);
+        hallPosition = i.getIntExtra("hall" , 0);
+        moviePosition = i.getIntExtra("movie" , 0);
+        String postData = "";
+
+        try {
+             postData = "hall="+ URLEncoder.encode(String.valueOf(hallPosition), "UTF-8")+"&movie="+ URLEncoder.encode(String.valueOf(moviePosition ), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        SeatingInfo SeatingInfo = new SeatingInfo(hallPosition, moviePosition);
+
+
+        Log.d(TAG , hallPosition  + "");
+        Log.d(TAG  , moviePosition + "");
 
         WebView webView = (WebView) findViewById(R.id.seating_webview);
 
         WebSettings webSettings = webView.getSettings();
 
         webSettings.setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(SeatingInfo , "seating" );
         Log.d("view" , url);
-        webView.loadUrl(url);
+//        webView.loadUrl(url);
+
+        webView.postUrl(url ,postData.getBytes());
 
         Intent intent = new Intent(Seat_Book.this , NotificationService.class);
         startService(intent);
 
+    }
+
+    class SeatingInfo{
+        public  int hall;
+        public int movie;
+        public SeatingInfo(int hallPosition, int moviePosition) {
+            hall = hallPosition;
+            movie = moviePosition;
+        }
+
+        @android.webkit.JavascriptInterface
+        public void info(){
+            Log.d("Hello" , "worlds");
+        }
     }
 }

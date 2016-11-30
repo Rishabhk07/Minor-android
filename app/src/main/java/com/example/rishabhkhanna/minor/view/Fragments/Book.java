@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.rishabhkhanna.minor.R;
 import com.example.rishabhkhanna.minor.models.MovieHalls;
 import com.example.rishabhkhanna.minor.view.Activities.Seat_Book;
+import com.example.rishabhkhanna.minor.view.Activities.movie_select;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class Book extends Fragment {
             holder.book.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(getActivity() , Seat_Book.class);
+                    Intent i = new Intent(getActivity() , movie_select.class);
                     i.putExtra("position" , position);
                     startActivity(i);
                 }
