@@ -53,7 +53,6 @@ public class Seat_Book extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         webView.addJavascriptInterface(SeatingInfo , "seating" );
         Log.d("view" , url);
-//        webView.loadUrl(url);
 
         webView.postUrl(url ,postData.getBytes());
 
