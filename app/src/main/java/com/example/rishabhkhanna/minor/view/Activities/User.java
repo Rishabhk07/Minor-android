@@ -1,5 +1,6 @@
 package com.example.rishabhkhanna.minor.view.Activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.example.rishabhkhanna.minor.R;
+import com.example.rishabhkhanna.minor.Services.NotificationService;
 import com.example.rishabhkhanna.minor.view.Fragments.Book;
 import com.example.rishabhkhanna.minor.view.Fragments.ShowcaseFragment;
 import com.example.rishabhkhanna.minor.view.Fragments.UserFragment;
@@ -19,6 +21,8 @@ public class User extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+        Intent intent = new Intent(User.this , NotificationService.class);
+        startService(intent);
 
 
         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);

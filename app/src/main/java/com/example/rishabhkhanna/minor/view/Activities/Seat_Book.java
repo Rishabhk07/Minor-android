@@ -56,8 +56,7 @@ public class Seat_Book extends AppCompatActivity {
 
         webView.postUrl(url ,postData.getBytes());
 
-        Intent intent = new Intent(Seat_Book.this , NotificationService.class);
-        startService(intent);
+
 
     }
 

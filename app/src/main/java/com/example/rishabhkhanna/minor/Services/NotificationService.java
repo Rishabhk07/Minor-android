@@ -25,7 +25,7 @@ public class NotificationService extends FirebaseMessagingService{
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Map<String, String> data = remoteMessage.getData();
-        Log.d("Data Service" , data.get("Rishabh"));
+
         // [START_EXCLUDE]
         // There are two types of messages data messages and notification messages. Data messages are handled
         // here in onMessageReceived whether the app is in the foreground or background. Data messages are the type
@@ -42,9 +42,9 @@ public class NotificationService extends FirebaseMessagingService{
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_account_circle_black_24dp)
-                        .setContentTitle(data.get("Rishabh"))
-                        .setContentText(data.get("price")).setDefaults(Notification.DEFAULT_SOUND);
+                        .setSmallIcon(R.drawable.log)
+                        .setContentTitle(data.get("title"))
+                        .setContentText("New Price of the movie you just viewed "+ data.get("movie_name") + " is " + data.get("price")).setDefaults(Notification.DEFAULT_SOUND);
 
 
         NotificationManager mgr = (NotificationManager) getSystemService(NotificationService.NOTIFICATION_SERVICE);
