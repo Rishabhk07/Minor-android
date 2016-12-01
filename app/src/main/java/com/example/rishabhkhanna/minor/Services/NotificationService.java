@@ -13,7 +13,9 @@ import android.util.Log;
 import com.example.rishabhkhanna.minor.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.util.Map;
 
 public class NotificationService extends FirebaseMessagingService{
@@ -40,11 +42,26 @@ public class NotificationService extends FirebaseMessagingService{
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, remoteMessage.getFrom());
 
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
+        Log.d("rishabh" , data.get("url"));
+
+        NotificationCompat.BigPictureStyle notiStyle = new NotificationCompat.BigPictureStyle();
+
+        try {
+            notiStyle.bigPicture(Picasso.with(getApplicationContext()).load(data.get("url")).get());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.log)
                         .setContentTitle(data.get("title"))
-                        .setContentText("New Price of the movie you just viewed "+ data.get("movie_name") + " is " + data.get("price")).setDefaults(Notification.DEFAULT_SOUND);
+                        .setContentText("New Price of the movie you just viewed "+ data.get("movie_name") + " is " + data.get("price")).setDefaults(Notification.DEFAULT_SOUND).setStyle(notiStyle);
+
+
+
+
 
 
         NotificationManager mgr = (NotificationManager) getSystemService(NotificationService.NOTIFICATION_SERVICE);

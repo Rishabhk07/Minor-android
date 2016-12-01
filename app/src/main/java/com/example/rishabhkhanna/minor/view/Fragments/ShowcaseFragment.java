@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.rishabhkhanna.minor.R;
 import com.example.rishabhkhanna.minor.models.ShowCaseMovies;
+import com.example.rishabhkhanna.minor.models.movies;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.squareup.picasso.Picasso;
 
@@ -37,11 +38,7 @@ public class ShowcaseFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_showcase, container, false);
 
-        ArrayList<ShowCaseMovies> arrayList = new ArrayList<>(3);
-
-        arrayList.add(new ShowCaseMovies("Ae dil hai mushkil" , "https://in.bmscdn.com/iedb/movies/images/website/listing/large/ae-dil-hai-mushkil-et00032168-30-08-2016-10-50-16.jpg"));
-        arrayList.add(new ShowCaseMovies("Shivaay" , "https://in.bmscdn.com/iedb/movies/images/website/listing/large/et00030790_02-07-2016_12-58-47.jpg"));
-        arrayList.add(new ShowCaseMovies("Rock on 2" , "https://in.bmscdn.com/iedb/movies/images/website/listing/large/rock-on-2-et00035915-02-09-2016-12-53-07.jpg"));
+        ArrayList<movies.details> arrayList = movies.getMovies();
 
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_showcase);
@@ -76,14 +73,14 @@ public class ShowcaseFragment extends Fragment {
 
     public class ShowcaseRecyclerViewAdapter extends  RecyclerView.Adapter<ShowcaseRecyclerViewHolder>{
 
-        private ArrayList<ShowCaseMovies> scrapMovies;
+        private ArrayList<movies.details> scrapMovies;
 
         @Override
         public int getItemViewType(int position) {
             return super.getItemViewType(position);
         }
 
-        public ShowcaseRecyclerViewAdapter(ArrayList<ShowCaseMovies> scrapMovies) {
+        public ShowcaseRecyclerViewAdapter(ArrayList<movies.details> scrapMovies) {
                 this.scrapMovies = scrapMovies;
         }
 
@@ -101,11 +98,11 @@ public class ShowcaseFragment extends Fragment {
         @Override
         public void onBindViewHolder(ShowcaseRecyclerViewHolder holder, int position) {
 
-            ShowCaseMovies thisMovie = scrapMovies.get(position);
+            movies.details thisMovie = scrapMovies.get(position);
 
             holder.showcaseText.setText(thisMovie.getName());
 //            holder.showcaseImage.
-            Picasso.with(getActivity()).load(thisMovie.getImageUrl()).into(holder.showcaseImage);
+            Picasso.with(getActivity()).load(thisMovie.getImage_url()).into(holder.showcaseImage);
 
         }
 
