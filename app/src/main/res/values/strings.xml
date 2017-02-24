@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Minor</string>
+    <string name="app_name">Movie Today</string>
     <string name="title_activity_user">User</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>

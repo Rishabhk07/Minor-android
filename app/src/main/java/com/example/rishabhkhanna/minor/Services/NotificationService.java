@@ -11,6 +11,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 import com.example.rishabhkhanna.minor.R;
+import com.example.rishabhkhanna.minor.models.Notifications;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.squareup.picasso.Picasso;
@@ -52,7 +53,9 @@ public class NotificationService extends FirebaseMessagingService{
             e.printStackTrace();
         }
 
-
+        String name = data.get("movie_name");
+        String price = data.get("price");
+        String url = data.get("url");
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.log)
@@ -64,8 +67,12 @@ public class NotificationService extends FirebaseMessagingService{
 
 
 
+
         NotificationManager mgr = (NotificationManager) getSystemService(NotificationService.NOTIFICATION_SERVICE);
         mgr.notify(0 , mBuilder.build());
+
+//        Notifications.notify.add(new Notifications.notification(name , price , url));
+//        Log.d(String.valueOf(Notifications.notify), "YO");
 
 
 

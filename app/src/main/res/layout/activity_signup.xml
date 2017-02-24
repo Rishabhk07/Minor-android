@@ -64,6 +64,9 @@
         android:layout_marginBottom="24dp"
         android:padding="12dp"
         android:text="Create Account"
+        android:background="@color/com_facebook_blue"
+        android:textColor="#fff"
+        android:textStyle="bold"
         />
     
     <TextView

@@ -11,6 +11,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.example.rishabhkhanna.minor.R;
 import com.example.rishabhkhanna.minor.Services.NotificationService;
 import com.example.rishabhkhanna.minor.view.Fragments.Book;
+import com.example.rishabhkhanna.minor.view.Fragments.NotificationFragment;
 import com.example.rishabhkhanna.minor.view.Fragments.ShowcaseFragment;
 import com.example.rishabhkhanna.minor.view.Fragments.UserFragment;
 
@@ -60,6 +61,10 @@ public class User extends AppCompatActivity {
                         fragmentTransaction1.commit();
                         break;
                     case 1:
+                        NotificationFragment notificationFragment= new NotificationFragment();
+                        FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction4.replace(R.id.frame_layout , notificationFragment , null);
+                        fragmentTransaction4.commit();
                         break;
                     case 2:
                         Book bookFragment = new Book();

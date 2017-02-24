@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:id="@+id/notification_img"
+        android:src="#323232"
+        android:layout_margin="20dp"
+        />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/notification_img"
+        android:text="Movie Name"
+        android:textStyle="bold"
+        android:textSize="28dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+            android:id="@+id/noti_name"
+        />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/notification_img"
+        android:layout_below="@id/noti_name"
+        android:text="New Price - Rs."
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+            android:id="@+id/rs_noti"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/rs_noti"
+            android:layout_below="@id/noti_name"
+            android:text="150"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/price"
+            />
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

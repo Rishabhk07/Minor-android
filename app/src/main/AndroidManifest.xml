@@ -15,15 +15,16 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".view.Activities.Login" />
-        <activity android:name=".view.Activities.Signup" />
-        <activity android:name=".view.Activities.User">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".view.Activities.Login" />
+        <activity android:name=".view.Activities.Signup" />
+        <activity android:name=".view.Activities.User">
         </activity>
         <activity android:name=".view.Activities.Seat_Book"></activity>
 

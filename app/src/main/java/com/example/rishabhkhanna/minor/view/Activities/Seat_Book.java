@@ -17,7 +17,7 @@ import java.net.URLEncoder;
 
 public class Seat_Book extends AppCompatActivity {
 
-    public static final String url = "http://192.168.1.101:3000/webview";
+    public static final String url = "http://192.168.43.164:3000/webview";
     public static final String TAG = "seat book";
     int hallPosition;
     int moviePosition;
