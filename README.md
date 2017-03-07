@@ -1,4 +1,4 @@
-# Movie Fair-android
+# Movie Fare-android
 An Android App to sell movie tickets based on dynamic pricing algorithm, that are used in flight tickets and app based cab services
 
 ## Idea 
