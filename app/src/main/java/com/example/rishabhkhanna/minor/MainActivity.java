@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         login = (Button) findViewById(R.id.login_main);
         signup = (Button) findViewById(R.id.signup_main);
 //        que = Volley.newRequestQueue(this);
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this , Login.class);
+                Intent i = new Intent(MainActivity.this, Login.class);
                 startActivity(i);
             }
         });
@@ -58,12 +57,10 @@ public class MainActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this , Signup.class);
+                Intent i = new Intent(MainActivity.this, Signup.class);
                 startActivity(i);
             }
         });
-
-
 
 
     }
@@ -76,20 +73,18 @@ public class MainActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("Hello" , "worlds");
+                Log.d("Hello", "worlds");
                 Log.d("TAG", response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("TAG" , error.toString());
+                Log.d("TAG", error.toString());
             }
         });
 
         return stringRequest;
     }
-
-
 
 
 }

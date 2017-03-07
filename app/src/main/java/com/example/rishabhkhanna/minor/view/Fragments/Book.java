@@ -39,12 +39,12 @@ public class Book extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_book2, container, false);
+        View root = inflater.inflate(R.layout.fragment_book2, container, false);
 
         RecyclerView list = (RecyclerView) root.findViewById(R.id.recycler_halls);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
-        HallRecyclerViewAdapter hallRecyclerViewAdapter  = new HallRecyclerViewAdapter(MovieHalls.getHalls());
+        HallRecyclerViewAdapter hallRecyclerViewAdapter = new HallRecyclerViewAdapter(MovieHalls.getHalls());
 
         list.setLayoutManager(layoutManager);
         list.setAdapter(hallRecyclerViewAdapter);
@@ -52,11 +52,10 @@ public class Book extends Fragment {
         hallRecyclerViewAdapter.notifyDataSetChanged();
 
 
-
         return root;
     }
 
-    public class HallsRecyclerViewHolder extends RecyclerView.ViewHolder{
+    public class HallsRecyclerViewHolder extends RecyclerView.ViewHolder {
 
         public TextView hallName;
         public Button book;
@@ -71,7 +70,7 @@ public class Book extends Fragment {
         }
     }
 
-    public class HallRecyclerViewAdapter extends RecyclerView.Adapter<HallsRecyclerViewHolder>{
+    public class HallRecyclerViewAdapter extends RecyclerView.Adapter<HallsRecyclerViewHolder> {
 
         public ArrayList<MovieHalls.Halls> list;
 
@@ -83,7 +82,7 @@ public class Book extends Fragment {
         public HallsRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             LayoutInflater li = getLayoutInflater(null);
-            View itemView = li.inflate(R.layout.movie_hall , null);
+            View itemView = li.inflate(R.layout.movie_hall, null);
 
             HallsRecyclerViewHolder holder = new HallsRecyclerViewHolder(itemView);
 
@@ -97,8 +96,8 @@ public class Book extends Fragment {
             holder.book.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(getActivity() , movie_select.class);
-                    i.putExtra("position" , position);
+                    Intent i = new Intent(getActivity(), movie_select.class);
+                    i.putExtra("position", position);
                     startActivity(i);
                 }
             });

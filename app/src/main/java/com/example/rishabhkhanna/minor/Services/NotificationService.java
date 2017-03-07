@@ -19,12 +19,13 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.Map;
 
-public class NotificationService extends FirebaseMessagingService{
+public class NotificationService extends FirebaseMessagingService {
 
     private String TAG = "Service";
 
     public NotificationService() {
     }
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Map<String, String> data = remoteMessage.getData();
@@ -43,7 +44,7 @@ public class NotificationService extends FirebaseMessagingService{
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, remoteMessage.getFrom());
 
-        Log.d("rishabh" , data.get("url"));
+        Log.d("rishabh", data.get("url"));
 
         NotificationCompat.BigPictureStyle notiStyle = new NotificationCompat.BigPictureStyle();
 
@@ -58,25 +59,16 @@ public class NotificationService extends FirebaseMessagingService{
         String url = data.get("url");
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.log)
-                        .setContentTitle(data.get("title"))
-                        .setContentText("New Price of the movie you just viewed "+ data.get("movie_name") + " is " + data.get("price")).setDefaults(Notification.DEFAULT_SOUND).setStyle(notiStyle);
-
-
-
-
-
+                .setSmallIcon(R.drawable.log)
+                .setContentTitle(data.get("title"))
+                .setContentText("New Price of the movie you just viewed " + data.get("movie_name") + " is " + data.get("price")).setDefaults(Notification.DEFAULT_SOUND).setStyle(notiStyle);
 
 
         NotificationManager mgr = (NotificationManager) getSystemService(NotificationService.NOTIFICATION_SERVICE);
-        mgr.notify(0 , mBuilder.build());
+        mgr.notify(0, mBuilder.build());
 
 //        Notifications.notify.add(new Notifications.notification(name , price , url));
 //        Log.d(String.valueOf(Notifications.notify), "YO");
-
-
-
-
 
 
         // Check if message contains a data payload.
@@ -92,7 +84,6 @@ public class NotificationService extends FirebaseMessagingService{
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
     }
-
 
 
 }

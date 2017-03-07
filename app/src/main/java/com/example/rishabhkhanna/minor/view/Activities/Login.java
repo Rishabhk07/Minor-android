@@ -53,10 +53,10 @@ public class Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                if(user != null){
-                    Log.d(TAG , "cant Login");
+                if (user != null) {
+                    Log.d(TAG, "cant Login");
                     Toast.makeText(Login.this, "Cant login in firebase", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Log.d(TAG, "onAuthStateChanged: " + user.getEmail().toString());
 
                 }
@@ -90,13 +90,13 @@ public class Login extends AppCompatActivity {
         String email = emailET.getText().toString();
         String password = passwordET.getText().toString();
 
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if(!task.isSuccessful()){
+                if (!task.isSuccessful()) {
                     Toast.makeText(Login.this, "Cannot Login right now !!", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     //make network request to fetch
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     RequestQueue que = Volley.newRequestQueue(Login.this);
@@ -105,19 +105,19 @@ public class Login extends AppCompatActivity {
                         Gson gson = new Gson();
                         emailObject email = new emailObject(user.getEmail().toString());
                         String emailJson = gson.toJson(email);
-                        que.add(utils.stringrequestPOSTgetUser(emailJson, new utils.serverCallback(){
-                        // server call  back to be implemented after network call
+                        que.add(utils.stringrequestPOSTgetUser(emailJson, new utils.serverCallback() {
+                            // server call  back to be implemented after network call
                             @Override
                             public void onSuccess(AuthCredits authCredits) {
                                 Toast.makeText(Login.this, "Login Successfull", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(Login.this , User.class);
+                                Intent i = new Intent(Login.this, User.class);
                                 progressDialog.dismiss();
                                 startActivity(i);
 
                             }
 
 
-                        } , Login.this));
+                        }, Login.this));
 
                     } catch (JSONException e) {
                         e.printStackTrace();

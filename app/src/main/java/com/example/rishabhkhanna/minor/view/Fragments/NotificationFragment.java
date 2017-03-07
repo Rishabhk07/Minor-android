@@ -36,10 +36,9 @@ public class NotificationFragment extends Fragment {
         // Inflate the layout for this fragment
 
 
+        View root = inflater.inflate(R.layout.fragment_notification, container, false);
 
-        View root =  inflater.inflate(R.layout.fragment_notification, container, false);
-
-        if(Notifications.notify != null) {
+        if (Notifications.notify != null) {
 
             RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.noti_recycler);
 
@@ -51,11 +50,10 @@ public class NotificationFragment extends Fragment {
         }
 
 
-
         return root;
     }
 
-    public class NotifiactionRecyclerViewHolder extends RecyclerView.ViewHolder{
+    public class NotifiactionRecyclerViewHolder extends RecyclerView.ViewHolder {
         public ImageView notiImage;
         public TextView notiName;
         public TextView notiPrice;
@@ -69,7 +67,7 @@ public class NotificationFragment extends Fragment {
         }
     }
 
-    public class NotificationRecyclerViewAdapter extends  RecyclerView.Adapter<NotificationFragment.NotifiactionRecyclerViewHolder>{
+    public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<NotificationFragment.NotifiactionRecyclerViewHolder> {
 
         private ArrayList<Notifications.notification> notifications;
 
@@ -84,10 +82,10 @@ public class NotificationFragment extends Fragment {
 
         @Override
         public NotificationFragment.NotifiactionRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            Log.d("TAG" , "on create view called");
+            Log.d("TAG", "on create view called");
 
             LayoutInflater li = getLayoutInflater(null);
-            View view = li.inflate(R.layout.notification_tupple , null);
+            View view = li.inflate(R.layout.notification_tupple, null);
 
             NotifiactionRecyclerViewHolder holder = new NotifiactionRecyclerViewHolder(view);
             return holder;

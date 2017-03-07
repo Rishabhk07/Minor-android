@@ -29,11 +29,11 @@ public class utils {
     public static AuthCredits authenticatedCredits = null;
     public String TAG = "Utils";
 
-    public interface serverCallback{
+    public interface serverCallback {
         void onSuccess(AuthCredits authCredits);
     }
 
-    public void stringGETrequest(String url){
+    public void stringGETrequest(String url) {
         StringRequest StringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -48,13 +48,13 @@ public class utils {
 
     }
 
-    public static final JsonObjectRequest stringrequestPOST(String jsonAuthData, final serverCallback serverCallback , final Context context) throws JSONException {
+    public static final JsonObjectRequest stringrequestPOST(String jsonAuthData, final serverCallback serverCallback, final Context context) throws JSONException {
 
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, addUserEndPoint , new JSONObject(jsonAuthData), new Response.Listener<JSONObject>() {
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, addUserEndPoint, new JSONObject(jsonAuthData), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("TAG", "user addedsuccesfuly with response:-" + response );
-                Log.d("TAG", "user addedsuccesfuly with response:-" + response );
+                Log.d("TAG", "user addedsuccesfuly with response:-" + response);
+                Log.d("TAG", "user addedsuccesfuly with response:-" + response);
                 try {
                     String email = response.getString("email");
                     String name = response.getString("name");
@@ -66,10 +66,10 @@ public class utils {
 //                    editor.putString("name" , name);
 //                    editor.commit();
 
-                    Log.d("TAG", "email: " + email );
-                    Log.d("TAG", "name: "+ name );
-                    Log.d("TAG", "password: " + password );
-                    AuthCredits authCredits = new AuthCredits(name , email , password);
+                    Log.d("TAG", "email: " + email);
+                    Log.d("TAG", "name: " + name);
+                    Log.d("TAG", "password: " + password);
+                    AuthCredits authCredits = new AuthCredits(name, email, password);
                     authenticatedCredits = authCredits;
                     serverCallback.onSuccess(authCredits);
 
@@ -88,20 +88,20 @@ public class utils {
         return stringRequest;
     }
 
-    public static final JsonObjectRequest stringrequestPOSTgetUser(String email, final serverCallback serverCallback , Context context) throws JSONException {
+    public static final JsonObjectRequest stringrequestPOSTgetUser(String email, final serverCallback serverCallback, Context context) throws JSONException {
 
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, getUserEndPoint , new JSONObject(email), new Response.Listener<JSONObject>() {
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, getUserEndPoint, new JSONObject(email), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-             Log.d("LoginTAG" , "Login wiht" + response);
+                Log.d("LoginTAG", "Login wiht" + response);
                 String email = null;
                 try {
                     email = response.getString("email");
                     String name = response.getString("name");
                     String password = response.getString("password");
-                    Log.d("TAG", "email: " + email );
-                    Log.d("TAG", "name: "+ name );
-                    Log.d("TAG", "password: " + password );
+                    Log.d("TAG", "email: " + email);
+                    Log.d("TAG", "name: " + name);
+                    Log.d("TAG", "password: " + password);
 
 ////                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 //                    SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -109,13 +109,12 @@ public class utils {
 //                    editor.putString("name" , name);
 //                    editor.commit();
 
-                    AuthCredits authCredits = new AuthCredits(name , email , password);
+                    AuthCredits authCredits = new AuthCredits(name, email, password);
                     authenticatedCredits = authCredits;
                     serverCallback.onSuccess(authCredits);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
 
 
             }

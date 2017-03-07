@@ -28,14 +28,13 @@ public class Seat_Book extends AppCompatActivity {
         setContentView(R.layout.activity_seat__book);
 
 
-
         Intent i = getIntent();
-        hallPosition = i.getIntExtra("hall" , 0);
-        moviePosition = i.getIntExtra("movie" , 0);
+        hallPosition = i.getIntExtra("hall", 0);
+        moviePosition = i.getIntExtra("movie", 0);
         String postData = "";
 
         try {
-             postData = "hall="+ URLEncoder.encode(String.valueOf(hallPosition), "UTF-8")+"&movie="+ URLEncoder.encode(String.valueOf(moviePosition ), "UTF-8");
+            postData = "hall=" + URLEncoder.encode(String.valueOf(hallPosition), "UTF-8") + "&movie=" + URLEncoder.encode(String.valueOf(moviePosition), "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -43,34 +42,34 @@ public class Seat_Book extends AppCompatActivity {
         SeatingInfo SeatingInfo = new SeatingInfo(hallPosition, moviePosition);
 
 
-        Log.d(TAG , hallPosition  + "");
-        Log.d(TAG  , moviePosition + "");
+        Log.d(TAG, hallPosition + "");
+        Log.d(TAG, moviePosition + "");
 
         WebView webView = (WebView) findViewById(R.id.seating_webview);
 
         WebSettings webSettings = webView.getSettings();
 
         webSettings.setJavaScriptEnabled(true);
-        webView.addJavascriptInterface(SeatingInfo , "seating" );
-        Log.d("view" , url);
+        webView.addJavascriptInterface(SeatingInfo, "seating");
+        Log.d("view", url);
 
-        webView.postUrl(url ,postData.getBytes());
-
+        webView.postUrl(url, postData.getBytes());
 
 
     }
 
-    class SeatingInfo{
-        public  int hall;
+    class SeatingInfo {
+        public int hall;
         public int movie;
+
         public SeatingInfo(int hallPosition, int moviePosition) {
             hall = hallPosition;
             movie = moviePosition;
         }
 
         @android.webkit.JavascriptInterface
-        public void info(){
-            Log.d("Hello" , "worlds");
+        public void info() {
+            Log.d("Hello", "worlds");
         }
     }
 }

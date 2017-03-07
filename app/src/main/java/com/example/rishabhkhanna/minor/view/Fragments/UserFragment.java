@@ -33,10 +33,10 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_user, container, false);
+        View root = inflater.inflate(R.layout.fragment_user, container, false);
 
 
-        TextView name= (TextView) root.findViewById(R.id.profile_name);
+        TextView name = (TextView) root.findViewById(R.id.profile_name);
         TextView emailTV = (TextView) root.findViewById(R.id.profile_email);
         Button btn = (Button) root.findViewById(R.id.logout);
 
@@ -50,7 +50,7 @@ public class UserFragment extends Fragment {
                 FirebaseAuth firebaseUser = FirebaseAuth.getInstance();
                 firebaseUser.signOut();
                 Toast.makeText(getActivity(), "Signout Successfull", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getActivity() , MainActivity.class);
+                Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
             }
         });

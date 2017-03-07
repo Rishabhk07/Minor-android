@@ -61,17 +61,16 @@ public class Signup extends AppCompatActivity {
         });
 
 
-
         mAuthListner = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                if(user == null){
-                    Log.d(TAG, "cant sign up now Error" );
-                }else{
-                    Log.d(TAG , "onAuthStateChanged: ");
+                if (user == null) {
+                    Log.d(TAG, "cant sign up now Error");
+                } else {
+                    Log.d(TAG, "onAuthStateChanged: ");
                 }
 
             }
@@ -88,37 +87,37 @@ public class Signup extends AppCompatActivity {
         final String password = passwordET.getText().toString();
 
         //Firebase create user
-        mAuth.createUserWithEmailAndPassword(email , password).addOnCompleteListener(Signup.this, new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(Signup.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(!task.isSuccessful()){
+                if (!task.isSuccessful()) {
                     Toast.makeText(Signup.this, "Cannot Signup right now !!", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
 
-                    Log.d(TAG , "Signup Completed !!");
-                    AuthCredits authCredits = new AuthCredits(name, email , password);
+                    Log.d(TAG, "Signup Completed !!");
+                    AuthCredits authCredits = new AuthCredits(name, email, password);
                     Gson gson = new Gson();
                     String signupJson = gson.toJson(authCredits);
                     //server call POST request
                     try {
                         //add volley request in que
 
-                        RequestQueue que  = Volley.newRequestQueue(Signup.this);
-                        que.add(utils.stringrequestPOST(signupJson , new utils.serverCallback(){
+                        RequestQueue que = Volley.newRequestQueue(Signup.this);
+                        que.add(utils.stringrequestPOST(signupJson, new utils.serverCallback() {
                             // call back inter face to be implemeted after network volley call
                             @Override
                             public void onSuccess(AuthCredits authCredits) {
-                                Log.d("Auth" , authCredits.getEmail());
-                                if(authCredits == null){
+                                Log.d("Auth", authCredits.getEmail());
+                                if (authCredits == null) {
                                     Toast.makeText(Signup.this, "Signup completed but cant login", Toast.LENGTH_SHORT).show();
-                                }else{
+                                } else {
                                     Toast.makeText(Signup.this, "Signup and Login Completed", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(Signup.this , User.class);
+                                    Intent i = new Intent(Signup.this, User.class);
                                     progressDialog.dismiss();
                                     startActivity(i);
                                 }
                             }
-                        } , Signup.this));
+                        }, Signup.this));
 
                     } catch (JSONException e) {
                         e.printStackTrace();

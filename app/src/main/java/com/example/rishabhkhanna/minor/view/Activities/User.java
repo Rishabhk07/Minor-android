@@ -22,7 +22,7 @@ public class User extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        Intent intent = new Intent(User.this , NotificationService.class);
+        Intent intent = new Intent(User.this, NotificationService.class);
         startService(intent);
 
 
@@ -47,36 +47,36 @@ public class User extends AppCompatActivity {
         UserFragment userFragment = new UserFragment();
         ShowcaseFragment showcaseFragment = new ShowcaseFragment();
         final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout , showcaseFragment, null);
+        fragmentTransaction.replace(R.id.frame_layout, showcaseFragment, null);
         fragmentTransaction.commit();
 
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
-                switch (position){
+                switch (position) {
                     case 0:
                         ShowcaseFragment showcaseFragment = new ShowcaseFragment();
                         FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction1.replace(R.id.frame_layout , showcaseFragment , null);
+                        fragmentTransaction1.replace(R.id.frame_layout, showcaseFragment, null);
                         fragmentTransaction1.commit();
                         break;
                     case 1:
-                        NotificationFragment notificationFragment= new NotificationFragment();
+                        NotificationFragment notificationFragment = new NotificationFragment();
                         FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction4.replace(R.id.frame_layout , notificationFragment , null);
+                        fragmentTransaction4.replace(R.id.frame_layout, notificationFragment, null);
                         fragmentTransaction4.commit();
                         break;
                     case 2:
                         Book bookFragment = new Book();
                         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.frame_layout , bookFragment , null);
+                        fragmentTransaction.replace(R.id.frame_layout, bookFragment, null);
                         fragmentTransaction.commit();
 
                         break;
                     case 3:
                         UserFragment userFragment = new UserFragment();
                         FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction2.replace(R.id.frame_layout , userFragment , null);
+                        fragmentTransaction2.replace(R.id.frame_layout, userFragment, null);
                         fragmentTransaction2.commit();
                         break;
                 }

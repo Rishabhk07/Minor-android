@@ -43,7 +43,8 @@ public class movie_select extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
     }
-    class selectViewHolder extends RecyclerView.ViewHolder{
+
+    class selectViewHolder extends RecyclerView.ViewHolder {
 
         TextView movie_name;
         TextView rating;
@@ -61,7 +62,7 @@ public class movie_select extends AppCompatActivity {
         }
     }
 
-    class selectRecyclerView extends RecyclerView.Adapter<selectViewHolder>{
+    class selectRecyclerView extends RecyclerView.Adapter<selectViewHolder> {
 
         ArrayList<movies.details> mList;
 
@@ -71,8 +72,8 @@ public class movie_select extends AppCompatActivity {
 
         @Override
         public selectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater li  = getLayoutInflater();
-            View view = li.inflate(R.layout.movie_select_tupple , null);
+            LayoutInflater li = getLayoutInflater();
+            View view = li.inflate(R.layout.movie_select_tupple, null);
 
             selectViewHolder viewHolder = new selectViewHolder(view);
 
@@ -90,9 +91,9 @@ public class movie_select extends AppCompatActivity {
             holder.card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(movie_select.this , Seat_Book.class);
-                    i.putExtra("hall" , hallPosition );
-                    i.putExtra("movie" , position);
+                    Intent i = new Intent(movie_select.this, Seat_Book.class);
+                    i.putExtra("hall", hallPosition);
+                    i.putExtra("movie", position);
                     startActivity(i);
                 }
             });

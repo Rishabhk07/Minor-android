@@ -43,7 +43,7 @@ public class ShowcaseFragment extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_showcase);
 
-        ShowcaseRecyclerViewAdapter showcaseRecyclerViewAdapter  = new ShowcaseRecyclerViewAdapter(arrayList);
+        ShowcaseRecyclerViewAdapter showcaseRecyclerViewAdapter = new ShowcaseRecyclerViewAdapter(arrayList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
@@ -52,26 +52,25 @@ public class ShowcaseFragment extends Fragment {
 
         showcaseRecyclerViewAdapter.notifyDataSetChanged();
 
-        Log.d("reg token:" , FirebaseInstanceId.getInstance().getToken());
-
+        Log.d("reg token:", FirebaseInstanceId.getInstance().getToken());
 
 
         return view;
     }
 
 
-    public class ShowcaseRecyclerViewHolder extends RecyclerView.ViewHolder{
+    public class ShowcaseRecyclerViewHolder extends RecyclerView.ViewHolder {
         public ImageView showcaseImage;
         public TextView showcaseText;
 
         public ShowcaseRecyclerViewHolder(View itemView) {
             super(itemView);
             showcaseImage = (ImageView) itemView.findViewById(R.id.showcase_image);
-            showcaseText  = (TextView) itemView.findViewById(R.id.showcase_text);
+            showcaseText = (TextView) itemView.findViewById(R.id.showcase_text);
         }
     }
 
-    public class ShowcaseRecyclerViewAdapter extends  RecyclerView.Adapter<ShowcaseRecyclerViewHolder>{
+    public class ShowcaseRecyclerViewAdapter extends RecyclerView.Adapter<ShowcaseRecyclerViewHolder> {
 
         private ArrayList<movies.details> scrapMovies;
 
@@ -81,15 +80,15 @@ public class ShowcaseFragment extends Fragment {
         }
 
         public ShowcaseRecyclerViewAdapter(ArrayList<movies.details> scrapMovies) {
-                this.scrapMovies = scrapMovies;
+            this.scrapMovies = scrapMovies;
         }
 
         @Override
         public ShowcaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            Log.d("TAG" , "on create view called");
+            Log.d("TAG", "on create view called");
 
             LayoutInflater li = getLayoutInflater(null);
-            View view = li.inflate(R.layout.showcase_tupple , null);
+            View view = li.inflate(R.layout.showcase_tupple, null);
 
             ShowcaseRecyclerViewHolder showcaseRecyclerViewHolder = new ShowcaseRecyclerViewHolder(view);
             return showcaseRecyclerViewHolder;
