@@ -14,5 +14,5 @@ Dynamic Pricing algorithms are applied on the Backend server
 ![halls](https://github.com/Rishabhk07/Minor-android/blob/master/screenshots/rsz_screenshot_20161201-152547.png)
 ![movie-hall](https://github.com/Rishabhk07/Minor-android/blob/master/screenshots/rsz_screenshot_20161201-155146.png)
 ![notification](https://github.com/Rishabhk07/Minor-android/blob/master/screenshots/rsz_screenshot_20161201-155914.png)
-![signup](https://github.com/Rishabhk07/Minor-android/blob/master/screenshots/Screen%20Shot%202016-12-01%20at%203.14.32%20PM.png)
-![Login](https://github.com/Rishabhk07/Minor-android/blob/master/screenshots/Screen%20Shot%202016-12-01%20at%203.14.42%20PM.png)
+![signup](https://github.com/Rishabhk07/Minor-android/blob/master/screenshots/rsz_1screen_shot_2016-12-01_at_31432_pm.png)
+![Login](https://github.com/Rishabhk07/Minor-android/blob/master/screenshots/rsz_1screen_shot_2016-12-01_at_31442_pm.png)
