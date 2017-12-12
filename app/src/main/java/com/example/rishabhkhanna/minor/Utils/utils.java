@@ -22,10 +22,10 @@ import org.json.JSONObject;
 
 public class utils {
 
-    public static final String cinemaEndPoint = "http://192.168.43.164:3000/cinema";
-    public static final String addUserEndPoint = "http://192.168.43.164:3000/addUser";
-    public static final String getUserEndPoint = "http://192.168.43.164:3000/getUser";
-    public static final String movieTickets = "http://192.168.43.164:3000/getUser";
+    public static final String cinemaEndPoint = "http://192.168.1.4:3000/cinema";
+    public static final String addUserEndPoint = "http://192.168.1.4:3000/addUser";
+    public static final String getUserEndPoint = "http://192.168.1.4:3000/getUser";
+    public static final String movieTickets = "http://192.168.1.4:3000/getUser";
     public static AuthCredits authenticatedCredits = null;
     public String TAG = "Utils";
 

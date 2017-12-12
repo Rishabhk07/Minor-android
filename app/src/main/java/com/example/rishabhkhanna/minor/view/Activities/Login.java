@@ -53,11 +53,11 @@ public class Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                if (user != null) {
+                if (user == null) {
                     Log.d(TAG, "cant Login");
                     Toast.makeText(Login.this, "Cant login in firebase", Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.d(TAG, "onAuthStateChanged: " + user.getEmail().toString());
+                    Log.d(TAG, "onAuthStateChanged: " + user);
 
                 }
 
